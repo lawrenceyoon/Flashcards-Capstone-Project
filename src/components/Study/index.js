@@ -14,6 +14,8 @@ const Study = () => {
     getCards();
   }, [params.deckId]);
 
+  console.log(cards);
+
   return (
     <div className="Study">
       <h2>Rendering in React: Study</h2>

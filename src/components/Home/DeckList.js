@@ -4,24 +4,25 @@ import { listDecks } from '../../utils/api';
 import Deck from './Deck';
 
 const DeckLists = () => {
-  const [lists, setLists] = useState([]);
+  // state
+  const [list, setList] = useState([]);
 
   // useEffect
   useEffect(() => {
     const getDecks = async () => {
       const response = await listDecks();
-      setLists(response);
+      setList(response);
     };
     getDecks();
   }, []);
 
+  console.log(list);
+
   // helper functions
   const renderList = () => {
-    const mapped = lists.map((list, index) => <Deck key={index} list={list} />);
+    const mapped = list.map((item, index) => <Deck key={index} list={item} />);
     return mapped;
   };
-
-  console.log(lists);
 
   return <div className="DeckLists">{renderList()}</div>;
 };

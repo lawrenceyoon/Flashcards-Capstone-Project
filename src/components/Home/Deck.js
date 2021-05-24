@@ -13,11 +13,13 @@ const Deck = ({ list }) => {
         </div>
         <p className="deck-description">{list.description}</p>
         <div className="buttons">
-          <Button color="btn-secondary" icon="oi oi-eye" text="View"></Button>
-          <Link to={`/decks/${list.id}/study`}>
-            <Button color="btn-primary" icon="oi oi-book" text="Study"></Button>
+          <Link to={`/decks/${list.id}`}>
+            <Button color="btn-secondary" icon="oi oi-eye" text="View" />
           </Link>
-          <Button color="btn-danger" icon="oi oi-trash"></Button>
+          <Link to={`/decks/${list.id}/study`}>
+            <Button color="btn-primary" icon="oi oi-book" text="Study" />
+          </Link>
+          <Button color="btn-danger" icon="oi oi-trash" />
         </div>
       </div>
     </div>
