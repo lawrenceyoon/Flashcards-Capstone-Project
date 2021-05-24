@@ -1,0 +1,30 @@
+.Deck .section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Deck .deckname {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Deck .decklength {
+  font-size: 12px;
+}
+
+.Deck .buttons {
+  display: flex;
+}
+
+.Deck button:first-child {
+  margin-right: 10px;
+}
+
+.Deck button:last-child {
+  margin-left: auto;
+}
+
+.Deck .oi-trash {
+  padding-left: 5px;
+}
