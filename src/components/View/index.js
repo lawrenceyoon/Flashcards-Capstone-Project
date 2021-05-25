@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import { listCards } from '../../utils/api';
+import './index.css';
+import { readDeck } from '../../utils/api';
+import Button from '../Button';
 import CardList from './CardList';
 
 const View = () => {
   // state
-  const [cards, setCards] = useState([]);
+  const [deck, setDeck] = useState([]);
 
-  console.log(cards);
-
+  // routeMatch
   const { params } = useRouteMatch();
 
   // useEffect (get cards)
   useEffect(() => {
     const getCards = async () => {
-      const response = await listCards(params.deckId);
-      setCards(response);
+      const response = await readDeck(params.deckId);
+      setDeck(response);
     };
     getCards();
   }, [params.deckId]);
@@ -30,11 +31,19 @@ const View = () => {
             </Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Library
+            {deck.name}
           </li>
         </ol>
       </nav>
-      <CardList cards={cards} />
+      <h4>{deck.name}</h4>
+      <p>{deck.description}</p>
+      <div className="buttons">
+        <Button color="btn-secondary" icon="oi oi-pencil" text="Edit" />
+        <Button color="btn-primary" icon="oi oi-book" text="Study" />
+        <Button color="btn-primary" icon="oi oi-plus" text="Add Cards" />
+      </div>
+      <h3>Cards</h3>
+      <CardList cards={deck.cards} />
     </div>
   );
 };

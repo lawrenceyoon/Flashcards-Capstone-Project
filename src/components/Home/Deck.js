@@ -4,6 +4,17 @@ import './Deck.css';
 import Button from '../Button';
 
 const Deck = ({ list }) => {
+  /* handleDelete() {
+    const doesConfirm = window.confirm("are you sure you want to delete?");
+    if (!doesConfirm) return;
+
+    deleteDeck(deck.id)
+    .then(() => {
+      onClickDelete(deck.id);
+    })
+    .catch((err) => console.log(err));
+  } */
+
   return (
     <div className="Deck card">
       <div className="card-body">
