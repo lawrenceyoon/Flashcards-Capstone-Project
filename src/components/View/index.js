@@ -7,10 +7,12 @@ import CardList from './CardList';
 
 const View = () => {
   // state
-  const [deck, setDeck] = useState([]);
+  const [deck, setDeck] = useState({});
 
   // routeMatch
-  const { params } = useRouteMatch();
+  const { params, url, path } = useRouteMatch();
+
+  console.log(url);
 
   // useEffect (get cards)
   useEffect(() => {
@@ -38,7 +40,9 @@ const View = () => {
       <h4>{deck.name}</h4>
       <p>{deck.description}</p>
       <div className="buttons">
-        <Button color="btn-secondary" icon="oi oi-pencil" text="Edit" />
+        <Link to={`${url}/edit`}>
+          <Button color="btn-secondary" icon="oi oi-pencil" text="Edit" />
+        </Link>
         <Button color="btn-primary" icon="oi oi-book" text="Study" />
         <Button color="btn-primary" icon="oi oi-plus" text="Add Cards" />
       </div>
