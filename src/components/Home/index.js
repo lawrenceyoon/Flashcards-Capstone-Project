@@ -29,7 +29,7 @@ const Home = () => {
           text="Create Deck"
         />
       </Link>
-      <DeckList list={list} />
+      <DeckList list={list} setList={setList} />
     </div>
   );
 };

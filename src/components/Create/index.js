@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // added useEffect
+import React, { useState } from 'react'; // added useEffect
 import { Link, useHistory } from 'react-router-dom';
 import './index.css';
 import { createDeck } from '../../utils/api';
@@ -19,7 +19,6 @@ const Create = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const savedDeck = await createDeck(deck);
-    console.log(savedDeck);
     history.push(`/decks/${savedDeck.id}`);
   };
 
