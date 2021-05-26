@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import './index.css';
 import { readDeck } from '../../utils/api';
-import Button from '../Button';
+import Button from '../../Button';
 import CardList from './CardList';
 
 const View = () => {
-  // state
-  const [deck, setDeck] = useState({});
-
   // routeMatch
   const { params, url } = useRouteMatch();
+
+  // state
+  const [deck, setDeck] = useState({});
 
   // useEffect (readDeck)
   useEffect(() => {
@@ -39,9 +39,21 @@ const View = () => {
       <p>{deck.description}</p>
       <div className="buttons">
         <Link to={`${url}/edit`}>
-          <Button color="btn-secondary" icon="oi oi-pencil" text="Edit" />
+          <Button
+            className="view-edit-btn"
+            color="btn-secondary"
+            icon="oi oi-pencil"
+            text="Edit"
+          />
         </Link>
-        <Button color="btn-primary" icon="oi oi-book" text="Study" />
+        <Link to={`${url}/study`}>
+          <Button
+            className="view-study-btn"
+            color="btn-primary"
+            icon="oi oi-book"
+            text="Study"
+          />
+        </Link>
         <Button color="btn-primary" icon="oi oi-plus" text="Add Cards" />
         <Button color="btn-danger" icon="oi oi-trash" />
       </div>

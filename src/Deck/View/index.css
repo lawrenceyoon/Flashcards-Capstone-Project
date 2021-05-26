@@ -8,8 +8,12 @@
   margin-top: 10px;
 }
 
-.View button:nth-child(2) {
-  margin: 0 10px;
+.View .view-edit-btn {
+  margin-right: 10px;
+}
+
+.View .view-study-btn {
+  margin-right: 10px;
 }
 
 .View .buttons {

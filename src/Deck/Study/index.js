@@ -3,7 +3,10 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { readDeck } from '../../utils/api';
 
 const Study = () => {
+  // useRouteMatch
   const { params } = useRouteMatch();
+
+  // state
   const [deck, setDeck] = useState([]);
 
   // useEffect (readDeck)

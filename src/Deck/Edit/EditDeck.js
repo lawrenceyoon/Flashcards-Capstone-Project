@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import './EditDeck.css';
-import { readDeck } from '../../utils/api';
-import Button from '../Button';
+import { readDeck, updateDeck } from '../../utils/api';
+import Button from '../../Button';
 
 const EditDeck = () => {
+  // routeMatch
+  const { params } = useRouteMatch();
+
   // state
   const [deck, setDeck] = useState({
     name: '',
     description: '',
   });
-
-  // routeMatch
-  const { params } = useRouteMatch();
 
   // useEffect (readDeck)
   useEffect(() => {
@@ -24,8 +24,10 @@ const EditDeck = () => {
   }, [params.deckId]);
 
   // event handlers
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async () => {
+    await updateDeck(deck);
+    // const updatedDeck = await readDeck();
+    // setDeck(updatedDeck);
   };
 
   const handleChange = (event) => {
@@ -58,7 +60,6 @@ const EditDeck = () => {
             className="form-control"
             type="text"
             name="name"
-            aria-describedby="name"
             onChange={handleChange}
             value={deck.name}
             required

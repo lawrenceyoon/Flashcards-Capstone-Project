@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Header from './Header';
-import Home from '../components/Home';
-import Create from '../components/Create';
-import View from '../components/View';
-import EditDeck from '../components/Edit/EditDeck';
-import Study from '../components/Study';
+import Home from '../Deck/Home';
+import Create from '../Deck/Create';
+import View from '../Deck/View';
+import EditDeck from '../Deck/Edit/EditDeck';
+import Study from '../Deck/Study';
 import NotFound from './NotFound';
 
 // get create to work first

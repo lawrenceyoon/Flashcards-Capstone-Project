@@ -2,41 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Deck.css';
 import { deleteDeck, listDecks } from '../../utils/api';
-import Button from '../Button';
+import Button from '../../Button';
 
-const Deck = ({ list, setList, deck }) => {
-  /* handleDelete() {
-    const doesConfirm = window.confirm("are you sure you want to delete?");
-    if (!doesConfirm) return;
-
-    deleteDeck(deck.id)
-    .then(() => {
-      onClickDelete(deck.id);
-    })
-    .catch((err) => console.log(err));
-  } */
-  console.log(list);
-
+const Deck = ({ setList, deck }) => {
   // event handlers
   const handleDelete = async () => {
     try {
       const doesConfirm = window.confirm('are you sure you want to delete?');
       if (!doesConfirm) return;
-
-      // handles back end
-      const removeDeck = await deleteDeck(deck.id);
-      // const filtered = setList(
-      //   list.filter((item) => {
-      //     console.log(item.id, idToDelete);
-      //     return item.id !== idToDelete;
-      //   })
-      // );
-      const awaited = await listDecks();
-      setList(awaited);
-
-      // handles front end
+      await deleteDeck(deck.id);
+      const newListDecks = await listDecks();
+      setList(newListDecks);
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   };
 
