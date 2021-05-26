@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'; // added useEffect
+import { Link, useHistory } from 'react-router-dom';
 import './index.css';
+import { createDeck } from '../../utils/api';
 import Button from '../Button';
 
 const Create = () => {
+  // useHistory
+  const history = useHistory();
+
   // state
-  const [formData, setFormData] = useState({
+  // const [deck, setDeck] = useState({}); // added extra state
+  const [deck, setDeck] = useState({
     name: '',
     description: '',
   });
 
   // event handlers
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
+    const savedDeck = await createDeck(deck);
+    console.log(savedDeck);
+    history.push(`/decks/${savedDeck.id}`);
   };
 
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setDeck({ ...deck, [event.target.name]: event.target.value });
   };
 
   return (
@@ -43,7 +51,7 @@ const Create = () => {
             type="text"
             name="name"
             onChange={handleChange}
-            value={formData.name}
+            value={deck.name}
             placeholder="Deck Name"
             required
           />
@@ -55,7 +63,7 @@ const Create = () => {
             className="form-control"
             name="description"
             onChange={handleChange}
-            value={formData.description}
+            value={deck.description}
             placeholder="Brief description of the deck"
             required
           ></textarea>

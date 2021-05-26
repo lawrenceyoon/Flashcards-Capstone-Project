@@ -6,8 +6,7 @@ import Button from '../Button';
 
 const EditDeck = () => {
   // state
-  const [deck, setDeck] = useState({});
-  const [formData, setFormData] = useState({
+  const [deck, setDeck] = useState({
     name: '',
     description: '',
   });
@@ -30,7 +29,7 @@ const EditDeck = () => {
   };
 
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setDeck({ ...deck, [event.target.name]: event.target.value });
   };
 
   return (
@@ -61,7 +60,7 @@ const EditDeck = () => {
             name="name"
             aria-describedby="name"
             onChange={handleChange}
-            value={formData.name}
+            value={deck.name}
             required
           />
         </div>
@@ -72,7 +71,7 @@ const EditDeck = () => {
             className="form-control"
             name="description"
             onChange={handleChange}
-            value={formData.description}
+            value={deck.description}
             required
           ></textarea>
         </div>

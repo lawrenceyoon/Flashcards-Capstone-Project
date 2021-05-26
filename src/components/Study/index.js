@@ -6,6 +6,9 @@ const Study = () => {
   const { params, url } = useRouteMatch();
   const [deck, setDeck] = useState([]);
 
+  console.log(url);
+  console.log(params);
+
   // useEffect (readDeck)
   useEffect(() => {
     const getSpecificDeck = async () => {
@@ -25,7 +28,7 @@ const Study = () => {
             </Link>
           </li>
           <li className="breadcrumb-item">
-            <Link to={url}>{deck.name}</Link>
+            <Link to={`/decks/${params.deckId}`}>{deck.name}</Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             Study
