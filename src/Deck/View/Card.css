@@ -8,10 +8,6 @@
   width: 30%;
 }
 
-.Card button:nth-of-type(1) {
-  margin-right: 5px;
-}
-
 .Card .oi-trash {
   padding-left: 5px;
 }

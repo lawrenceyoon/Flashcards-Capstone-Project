@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import './index.css';
 import { readDeck } from '../../utils/api';
-import Button from '../../Button';
 import CardList from './CardList';
 
 const View = () => {
@@ -39,23 +38,21 @@ const View = () => {
       <p>{deck.description}</p>
       <div className="buttons">
         <Link to={`${url}/edit`}>
-          <Button
-            className="view-edit-btn"
-            color="btn-secondary"
-            icon="oi oi-pencil"
-            text="Edit"
-          />
+          <button className="btn btn-secondary mr-2">
+            <span className="oi oi-pencil">&nbsp;</span>Edit
+          </button>
         </Link>
         <Link to={`${url}/study`}>
-          <Button
-            className="view-study-btn"
-            color="btn-primary"
-            icon="oi oi-book"
-            text="Study"
-          />
+          <button className="btn btn-primary mr-2">
+            <span className="oi oi-book">&nbsp;</span>Study
+          </button>
         </Link>
-        <Button color="btn-primary" icon="oi oi-plus" text="Add Cards" />
-        <Button color="btn-danger" icon="oi oi-trash" />
+        <button className="btn btn-primary">
+          <span className="oi oi-plus">&nbsp;</span>Add Cards
+        </button>
+        <button className="btn btn-danger">
+          <span className="oi oi-trash">&nbsp;</span>
+        </button>
       </div>
       <h3>Cards</h3>
       <CardList cards={deck.cards} />

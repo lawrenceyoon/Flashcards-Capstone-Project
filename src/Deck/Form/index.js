@@ -1,10 +1,7 @@
 import React from 'react';
-import Button from '../../Button';
 import '../Create';
 
 const Form = ({ handleFormSubmit, handleCancelClick, deck, setDeck }) => {
-  // state
-
   // helper functions
   const handleChange = (event) => {
     setDeck({ ...deck, [event.target.name]: event.target.value });
@@ -22,7 +19,6 @@ const Form = ({ handleFormSubmit, handleCancelClick, deck, setDeck }) => {
           onChange={handleChange}
           value={deck.name}
           placeholder="Deck Name"
-          required
         />
       </div>
       <div className="form-group">
@@ -34,15 +30,19 @@ const Form = ({ handleFormSubmit, handleCancelClick, deck, setDeck }) => {
           onChange={handleChange}
           value={deck.description}
           placeholder="Brief description of the deck"
-          required
         ></textarea>
-
-        <Button
-          color="btn-secondary"
-          text="Cancel"
-          onClick={handleCancelClick}
-        />
-        <Button color="btn-primary" text="Submit" />
+        <div className="buttons mt-3">
+          <button
+            className="btn btn-secondary mr-2"
+            type="button"
+            onClick={handleCancelClick}
+          >
+            Cancel
+          </button>
+          <button className="btn btn-primary" type="submit">
+            Submit
+          </button>
+        </div>
       </div>
     </form>
   );

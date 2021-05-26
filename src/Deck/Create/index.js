@@ -22,7 +22,7 @@ const Create = () => {
   };
 
   const handleCancelClick = () => {
-    history.push('/');
+    history.goBack();
   };
 
   return (

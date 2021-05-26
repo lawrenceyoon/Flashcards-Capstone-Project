@@ -1,19 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './index.css';
 import DeckList from './DeckList';
-import Button from '../../Button';
 
 const Home = () => {
   return (
     <div className="Home">
       <Link to="/decks/new">
-        <Button
-          className="deck-create-btn"
-          color="btn-secondary"
-          icon="oi oi-plus"
-          text="Create Deck"
-        />
+        <button className="btn btn-secondary mb-2">
+          <span className="oi oi-plus">&nbsp;</span>Create Deck
+        </button>
       </Link>
       <DeckList />
     </div>

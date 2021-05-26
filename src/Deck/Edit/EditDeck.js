@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch, useHistory } from 'react-router-dom';
 import './EditDeck.css';
 import { readDeck, updateDeck } from '../../utils/api';
-import Button from '../../Button';
+import Form from '../Form';
 
 const EditDeck = () => {
-  // routeMatch
+  // routeMatch, useHistory
   const { params } = useRouteMatch();
+  const history = useHistory();
 
   // state
   const [deck, setDeck] = useState({
@@ -24,14 +25,14 @@ const EditDeck = () => {
   }, [params.deckId]);
 
   // event handlers
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
     await updateDeck(deck);
-    // const updatedDeck = await readDeck();
-    // setDeck(updatedDeck);
+    history.push(`/decks/${params.deckId}`);
   };
 
-  const handleChange = (event) => {
-    setDeck({ ...deck, [event.target.name]: event.target.value });
+  const handleCancelClick = () => {
+    history.goBack();
   };
 
   return (
@@ -52,37 +53,12 @@ const EditDeck = () => {
         </ol>
       </nav>
       <h2>Edit Deck</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            className="form-control"
-            type="text"
-            name="name"
-            onChange={handleChange}
-            value={deck.name}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            className="form-control"
-            name="description"
-            onChange={handleChange}
-            value={deck.description}
-            required
-          ></textarea>
-        </div>
-        <Link to={`/decks/${params.deckId}`}>
-          <Button color="btn-secondary" text="Cancel" />
-        </Link>
-        <Link to={`/decks/${params.deckId}`}>
-          <Button color="btn-primary" text="Submit" />
-        </Link>
-      </form>
+      <Form
+        deck={deck}
+        setDeck={setDeck}
+        handleFormSubmit={handleFormSubmit}
+        handleCancelClick={handleCancelClick}
+      />
     </div>
   );
 };

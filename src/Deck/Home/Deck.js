@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Deck.css';
 import { deleteDeck, listDecks } from '../../utils/api';
-import Button from '../../Button';
 
 const Deck = ({ setList, deck }) => {
   // event handlers
@@ -28,16 +27,18 @@ const Deck = ({ setList, deck }) => {
         <p className="deck-description">{deck.description}</p>
         <div className="buttons">
           <Link to={`/decks/${deck.id}`}>
-            <Button color="btn-secondary" icon="oi oi-eye" text="View" />
+            <button className="btn btn-secondary mr-2">
+              <span className="oi oi-eye">&nbsp;</span>View
+            </button>
           </Link>
           <Link to={`/decks/${deck.id}/study`}>
-            <Button color="btn-primary" icon="oi oi-book" text="Study" />
+            <button className="btn btn-primary">
+              <span className="oi oi-book">&nbsp;</span>Study
+            </button>
           </Link>
-          <Button
-            deleteClick={handleDelete}
-            color="btn-danger"
-            icon="oi oi-trash"
-          />
+          <button className="btn btn-danger" onClick={handleDelete}>
+            <span className="oi oi-trash"></span>
+          </button>
         </div>
       </div>
     </div>

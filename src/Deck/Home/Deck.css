@@ -17,14 +17,10 @@
   display: flex;
 }
 
-.Deck button:first-child {
-  margin-right: 10px;
-}
-
 .Deck button:last-child {
   margin-left: auto;
 }
 
 .Deck .oi-trash {
-  padding-left: 5px;
+  padding-left: 3px;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import './Card.css';
-import Button from '../../Button';
 
 const Card = ({ card }) => {
   return (
@@ -9,8 +8,12 @@ const Card = ({ card }) => {
         <div className="front">{card.front}</div>
         <div className="back">{card.back}</div>
         <div className="buttons">
-          <Button color="btn-secondary" icon="oi oi-pencil" text="Edit" />
-          <Button color="btn-danger" icon="oi oi-trash" />
+          <button className="btn btn-secondary mr-2">
+            <span className="oi oi-pencil">&nbsp;</span>Edit
+          </button>
+          <button className="btn btn-danger">
+            <span className="oi oi-trash">&nbsp;</span>
+          </button>
         </div>
       </div>
     </div>
