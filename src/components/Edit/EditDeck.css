@@ -1,0 +1,7 @@
+.EditDeck button:nth-of-type(1) {
+  margin-right: 10px;
+}
+
+.EditDeck textarea {
+  height: 100px;
+}

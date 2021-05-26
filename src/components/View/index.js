@@ -10,17 +10,15 @@ const View = () => {
   const [deck, setDeck] = useState({});
 
   // routeMatch
-  const { params, url, path } = useRouteMatch();
+  const { params, url } = useRouteMatch();
 
-  console.log(url);
-
-  // useEffect (get cards)
+  // useEffect (readDeck)
   useEffect(() => {
-    const getCards = async () => {
+    const getSpecific = async () => {
       const response = await readDeck(params.deckId);
       setDeck(response);
     };
-    getCards();
+    getSpecific();
   }, [params.deckId]);
 
   return (
@@ -45,6 +43,7 @@ const View = () => {
         </Link>
         <Button color="btn-primary" icon="oi oi-book" text="Study" />
         <Button color="btn-primary" icon="oi oi-plus" text="Add Cards" />
+        <Button color="btn-danger" icon="oi oi-trash" />
       </div>
       <h3>Cards</h3>
       <CardList cards={deck.cards} />

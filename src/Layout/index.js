@@ -4,11 +4,13 @@ import Header from './Header';
 import Home from '../components/Home';
 import Create from '../components/Create';
 import View from '../components/View';
+import EditDeck from '../components/Edit/EditDeck';
 import Study from '../components/Study';
 import NotFound from './NotFound';
 
 // get create to work first
 // work on delete
+
 function Layout() {
   return (
     <div className="Layout">
@@ -24,6 +26,9 @@ function Layout() {
           </Route>
           <Route exact path="/decks/:deckId">
             <View />
+          </Route>
+          <Route path="/decks/:deckId/edit">
+            <EditDeck />
           </Route>
           <Route path="/decks/:deckId/study">
             <Study />

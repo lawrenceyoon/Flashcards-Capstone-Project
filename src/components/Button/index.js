@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Button = (props) => {
+const Button = ({ className, color, icon, text }) => {
   return (
-    <button className={`btn ${props.color}`}>
-      <span className={props.icon}>&nbsp;</span>
-      {props.text}
+    <button className={`${className} btn ${color}`}>
+      <span className={icon}>&nbsp;</span>
+      {text}
     </button>
   );
 };

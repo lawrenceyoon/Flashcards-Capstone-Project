@@ -6,13 +6,13 @@ const Study = () => {
   const { params, url } = useRouteMatch();
   const [deck, setDeck] = useState([]);
 
-  // useEffect (getCards)
+  // useEffect (readDeck)
   useEffect(() => {
-    const getCards = async () => {
+    const getSpecificDeck = async () => {
       const response = await readDeck(params.deckId);
       setDeck(response);
     };
-    getCards();
+    getSpecificDeck();
   }, [params.deckId]);
 
   return (

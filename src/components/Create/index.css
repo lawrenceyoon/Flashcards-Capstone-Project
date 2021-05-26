@@ -1,0 +1,7 @@
+.Create textarea {
+  height: 100px;
+}
+
+.Create button:nth-of-type(1) {
+  margin-right: 10px;
+}

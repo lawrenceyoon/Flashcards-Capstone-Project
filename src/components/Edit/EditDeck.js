@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './index.css';
+import React, { useState, useEffect } from 'react';
+import { Link, useRouteMatch } from 'react-router-dom';
+import './EditDeck.css';
+import { readDeck } from '../../utils/api';
 import Button from '../Button';
 
-const Create = () => {
+const EditDeck = () => {
   // state
+  const [deck, setDeck] = useState({});
   const [formData, setFormData] = useState({
     name: '',
     description: '',
   });
+
+  // routeMatch
+  const { params } = useRouteMatch();
+
+  // useEffect (readDeck)
+  useEffect(() => {
+    const getSpecificDeck = async () => {
+      const response = await readDeck(params.deckId);
+      setDeck(response);
+    };
+    getSpecificDeck();
+  }, [params.deckId]);
 
   // event handlers
   const handleFormSubmit = (event) => {
@@ -20,7 +34,7 @@ const Create = () => {
   };
 
   return (
-    <div className="Create">
+    <div className="EditDeck">
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -28,12 +42,15 @@ const Create = () => {
               <span className="oi oi-home">&nbsp;</span>Home
             </Link>
           </li>
+          <li className="breadcrumb-item">
+            <Link to={`/decks/${params.deckId}`}>{deck.name}</Link>
+          </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Create Deck
+            Edit Deck
           </li>
         </ol>
       </nav>
-      <h2>Create Deck</h2>
+      <h2>Edit Deck</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
@@ -42,9 +59,9 @@ const Create = () => {
             className="form-control"
             type="text"
             name="name"
+            aria-describedby="name"
             onChange={handleChange}
             value={formData.name}
-            placeholder="Deck Name"
             required
           />
         </div>
@@ -56,17 +73,18 @@ const Create = () => {
             name="description"
             onChange={handleChange}
             value={formData.description}
-            placeholder="Brief description of the deck"
             required
           ></textarea>
         </div>
-        <Link to="/">
+        <Link to={`/decks/${params.deckId}`}>
           <Button color="btn-secondary" text="Cancel" />
         </Link>
-        <Button color="btn-primary" text="Submit" />
+        <Link to={`/decks/${params.deckId}`}>
+          <Button color="btn-primary" text="Submit" />
+        </Link>
       </form>
     </div>
   );
 };
 
-export default Create;
+export default EditDeck;

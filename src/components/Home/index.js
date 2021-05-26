@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { listDecks } from '../../utils/api';
+import './index.css';
 import DeckList from './DeckList';
 import Button from '../Button';
 
@@ -9,7 +10,7 @@ const Home = () => {
   // state
   const [list, setList] = useState([]);
 
-  // useEffect decks
+  // useEffect listDecks
   useEffect(() => {
     const getDecks = async () => {
       const response = await listDecks();
@@ -21,7 +22,12 @@ const Home = () => {
   return (
     <div className="Home">
       <Link to="/decks/new">
-        <Button color="btn-secondary" icon="oi oi-plus" text="Create Deck" />
+        <Button
+          className="deck-create-btn"
+          color="btn-secondary"
+          icon="oi oi-plus"
+          text="Create Deck"
+        />
       </Link>
       <DeckList list={list} />
     </div>
