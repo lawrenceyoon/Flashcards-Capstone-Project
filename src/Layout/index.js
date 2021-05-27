@@ -1,11 +1,12 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Header from './Header';
-import Home from '../Deck/Home';
-import Create from '../Deck/Create';
-import View from '../Deck/View';
-import EditDeck from '../Deck/Edit/EditDeck';
-import Study from '../Deck/Study';
+import HomeDeck from '../Deck/Home';
+import CreateDeck from '../Deck/Create';
+import ViewDeck from '../Deck/View';
+import EditDeck from '../Deck/Edit';
+import StudyDeck from '../Deck/Study';
+import CreateCard from '../Card/Create';
 import NotFound from './NotFound';
 
 // get create to work first
@@ -19,19 +20,22 @@ function Layout() {
         {/* TODO: Implement the screen starting here */}
         <Switch>
           <Route exact path="/">
-            <Home />
+            <HomeDeck />
           </Route>
           <Route path="/decks/new">
-            <Create />
+            <CreateDeck />
           </Route>
           <Route exact path="/decks/:deckId">
-            <View />
+            <ViewDeck />
           </Route>
           <Route path="/decks/:deckId/edit">
             <EditDeck />
           </Route>
           <Route path="/decks/:deckId/study">
-            <Study />
+            <StudyDeck />
+          </Route>
+          <Route path="/decks/:deckId/cards/new">
+            <CreateCard />
           </Route>
           {/* Catch all */}
           <Route>
