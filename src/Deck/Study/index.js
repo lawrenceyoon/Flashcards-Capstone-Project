@@ -13,7 +13,8 @@ const Study = () => {
   // state
   const [deck, setDeck] = useState([]);
   const [count, setCount] = useState(0);
-  const [cardDisplay, setCardDisplay] = useState(false);
+  const [cardDisplay, setCardDisplay] = useState(true);
+  const [firstFlip, setFirstFlip] = useState(false);
 
   // useEffect (readDeck)
   useEffect(() => {
@@ -29,40 +30,53 @@ const Study = () => {
   // event handlers
   const handleFlipClick = () => {
     setCardDisplay(!cardDisplay);
+    setFirstFlip(true);
   };
 
   const handleNextClick = () => {
     if (count + 1 < deck.cards.length) {
       console.log(count);
       setCount(count + 1);
+      setCardDisplay(true);
+      setFirstFlip(false);
     } else {
-      const doesConfirm = window.confirm('Restart cards?');
+      const message = `Restart cards?\n\nClick 'cancel' to return to the home page.`;
+      const doesConfirm = window.confirm(message);
       if (!doesConfirm) {
         history.push('/');
       } else {
         setCount(0);
+        setCardDisplay(true);
+        setFirstFlip(false);
       }
     }
   };
 
   // if cardDisplay is true show back, else if false show front
   let cardDescription;
+  let frontOrBack;
 
   if (deck.cards) {
     if (cardDisplay) {
-      cardDescription = <p>{deck.cards[count].back}</p>;
-    } else if (!cardDisplay) {
+      frontOrBack = 'Front';
       cardDescription = <p>{deck.cards[count].front}</p>;
+    } else if (!cardDisplay) {
+      frontOrBack = 'Back';
+      cardDescription = <p>{deck.cards[count].back}</p>;
     }
   }
 
-  let frontOrBack;
+  // don't show next button on inital load
+  let renderNextButton;
   if (deck.cards) {
-    // if cardDisplay is true say back, else if false say front
-    if (cardDisplay) {
-      frontOrBack = 'Back';
+    if (firstFlip) {
+      renderNextButton = (
+        <button className="btn btn-primary" onClick={handleNextClick}>
+          Next
+        </button>
+      );
     } else {
-      frontOrBack = 'Front';
+      renderNextButton = null;
     }
   }
 
@@ -97,9 +111,7 @@ const Study = () => {
             >
               Flip
             </button>
-            <button className="btn btn-primary" onClick={handleNextClick}>
-              Next
-            </button>
+            {renderNextButton}
           </div>
         </div>
       </div>
