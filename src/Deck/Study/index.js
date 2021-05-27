@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useRouteMatch, useHistory } from 'react-router-dom';
 import { readDeck } from '../../utils/api';
-import Card from '../View/Card';
 
 // WORK ON NEXT
 
@@ -24,8 +23,6 @@ const Study = () => {
     };
     getSpecificDeck();
   }, [params.deckId]);
-
-  console.log(deck.cards);
 
   // event handlers
   const handleFlipClick = () => {
@@ -52,7 +49,6 @@ const Study = () => {
     }
   };
 
-  // if cardDisplay is true show back, else if false show front
   let cardDescription;
   let frontOrBack;
 
@@ -80,6 +76,45 @@ const Study = () => {
     }
   }
 
+  // DISPLAY CARDS IF deck.cards.length >= 3
+  let renderContent;
+  if (deck.cards) {
+    if (deck.cards.length >= 3) {
+      renderContent = (
+        <div className="card">
+          <div className="card-body">
+            <h4>
+              Card {count + 1} of {deck.cards.length} ({`${frontOrBack} side`})
+            </h4>
+            {cardDescription}
+            <button
+              className="btn btn-secondary mr-2"
+              onClick={handleFlipClick}
+            >
+              Flip
+            </button>
+            {renderNextButton}
+          </div>
+        </div>
+      );
+    } else {
+      renderContent = (
+        <div className="Not-enough">
+          <h3>Not enough cards.</h3>
+          <p>
+            You need at least 3 cards to study. There are {deck.cards.length}{' '}
+            cards in this deck.
+          </p>
+          <Link to={`/decks/${params.deckId}/cards/new`}>
+            <button className="btn btn-primary" type="button">
+              <span className="oi oi-plus">&nbsp;</span>Add Cards
+            </button>
+          </Link>
+        </div>
+      );
+    }
+  }
+
   if (deck.cards) {
     return (
       <div className="Study">
@@ -99,21 +134,7 @@ const Study = () => {
           </ol>
         </nav>
         <h2>{deck.name}: Study</h2>
-        <div className="card">
-          <div className="card-body">
-            <h4>
-              Card {count + 1} of {deck.cards.length} ({`${frontOrBack} side`})
-            </h4>
-            {cardDescription}
-            <button
-              className="btn btn-secondary mr-2"
-              onClick={handleFlipClick}
-            >
-              Flip
-            </button>
-            {renderNextButton}
-          </div>
-        </div>
+        {renderContent}
       </div>
     );
   } else {

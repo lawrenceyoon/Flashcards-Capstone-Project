@@ -33,6 +33,7 @@ function Layout() {
           <Route path="/decks/:deckId/study">
             <Study />
           </Route>
+          {/* Catch all */}
           <Route>
             <NotFound />
           </Route>
