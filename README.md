@@ -2,7 +2,7 @@
 
 ## Context
 
-A React project that reaches into a backend JSON API server to retrieve information on decks and cards. You can CREATE decks/cards, READ information on decks/cards, UPDATE cards, and DELETE decks/cards.
+A React project that reaches into a backend JSON API server to retrieve information on decks and cards. You can CREATE, READ, UPDATE, AND DELETE (CRUD) decks/cards.
 
 ## Intention
 
