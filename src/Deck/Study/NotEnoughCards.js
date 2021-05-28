@@ -9,10 +9,8 @@ const NotEnoughCards = ({ deck, deckId }) => {
         You need at least 3 cards to study. There are {deck.cards.length} cards
         in this deck.
       </p>
-      <Link to={`/decks/${deckId}/cards/new`}>
-        <button className="btn btn-primary" type="button">
-          <span className="oi oi-plus">&nbsp;</span>Add Cards
-        </button>
+      <Link className="btn btn-primary" to={`/decks/${deckId}/cards/new`}>
+        <span className="oi oi-plus">&nbsp;</span>Add Cards
       </Link>
     </div>
   );

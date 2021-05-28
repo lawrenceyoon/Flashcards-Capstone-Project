@@ -15,12 +15,10 @@ const DeckList = () => {
     getDecks();
   }, []);
 
-  // helper functions
   const mapped = list.map((deck, index) => (
     <Deck key={index} deck={deck} setList={setList} />
   ));
 
-  // think of as html
   return <div className="DeckList">{mapped}</div>;
 };
 

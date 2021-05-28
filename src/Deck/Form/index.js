@@ -26,6 +26,7 @@ const Form = ({ handleFormSubmit, deck, setDeck }) => {
           onChange={handleChange}
           value={deck.name}
           placeholder="Deck Name"
+          required
         />
       </div>
       <div className="form-group">
@@ -37,6 +38,7 @@ const Form = ({ handleFormSubmit, deck, setDeck }) => {
           onChange={handleChange}
           value={deck.description}
           placeholder="Brief description of the deck"
+          required
         ></textarea>
         <div className="buttons">
           <div className="buttons mt-3">

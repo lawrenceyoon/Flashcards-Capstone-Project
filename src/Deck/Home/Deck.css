@@ -17,7 +17,7 @@
   display: flex;
 }
 
-.Deck button:last-child {
+.Deck button {
   margin-left: auto;
 }
 

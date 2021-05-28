@@ -5,7 +5,7 @@ import { readDeck, deleteDeck } from '../../utils/api';
 import CardList from './CardList';
 
 const View = () => {
-  // routeMatch, useHistory
+  // useRouteMatch, useHistory
   const { params, url } = useRouteMatch();
   const history = useHistory();
 
@@ -52,22 +52,19 @@ const View = () => {
       <h4>{deck.name}</h4>
       <p>{deck.description}</p>
       <div className="buttons">
-        <Link to={`${url}/edit`}>
-          <button className="btn btn-secondary mr-2">
-            <span className="oi oi-pencil">&nbsp;</span>Edit
-          </button>
+        <Link className="btn btn-secondary mr-2" to={`${url}/edit`}>
+          <span className="oi oi-pencil">&nbsp;</span>Edit
         </Link>
-        <Link to={`${url}/study`}>
-          <button className="btn btn-primary mr-2">
-            <span className="oi oi-book">&nbsp;</span>Study
-          </button>
+        <Link className="btn btn-primary mr-2" to={`${url}/study`}>
+          <span className="oi oi-book">&nbsp;</span>Study
         </Link>
-        <Link to={`/decks/${params.deckId}/cards/new`}>
-          <button className="btn btn-primary">
-            <span className="oi oi-plus">&nbsp;</span>Add Cards
-          </button>
+        <Link
+          className="btn btn-primary"
+          to={`/decks/${params.deckId}/cards/new`}
+        >
+          <span className="oi oi-plus">&nbsp;</span>Add Cards
         </Link>
-        <button className="btn btn-danger" onClick={handleDelete}>
+        <button type="button" className="btn btn-danger" onClick={handleDelete}>
           <span className="oi oi-trash">&nbsp;</span>
         </button>
       </div>

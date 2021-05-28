@@ -28,17 +28,17 @@ const Deck = ({ setList, deck }) => {
         </div>
         <p className="deck-description">{deck.description}</p>
         <div className="buttons">
-          <Link to={`/decks/${deck.id}`}>
-            <button className="btn btn-secondary mr-2">
-              <span className="oi oi-eye">&nbsp;</span>View
-            </button>
+          <Link className="btn btn-secondary mr-2" to={`/decks/${deck.id}`}>
+            <span className="oi oi-eye">&nbsp;</span>View
           </Link>
-          <Link to={`/decks/${deck.id}/study`}>
-            <button className="btn btn-primary">
-              <span className="oi oi-book">&nbsp;</span>Study
-            </button>
+          <Link className="btn btn-primary" to={`/decks/${deck.id}/study`}>
+            <span className="oi oi-book">&nbsp;</span>Study
           </Link>
-          <button className="btn btn-danger" onClick={handleDelete}>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleDelete}
+          >
             <span className="oi oi-trash"></span>
           </button>
         </div>

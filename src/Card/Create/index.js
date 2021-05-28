@@ -3,8 +3,6 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { readDeck, createCard } from '../../utils/api';
 import Form from '../Form';
 
-// work on adding a card, first do the breadcrumb nav
-// need to make a form component, same way I did for decks
 const CreateCard = () => {
   // useRouteMatch
   const { params, url } = useRouteMatch();
@@ -24,9 +22,6 @@ const CreateCard = () => {
     };
     getSpecificDeck();
   }, [params.deckId]);
-
-  // useEffect (getCards)
-  // useEffect()
 
   // event handlers
   const handleFormSubmit = async (event) => {

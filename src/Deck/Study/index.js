@@ -4,8 +4,6 @@ import { readDeck } from '../../utils/api';
 import StudyCard from './StudyCard';
 import NotEnoughCards from './NotEnoughCards';
 
-// WORK ON NEXT
-
 const Study = () => {
   // useRouteMatch, useHistory
   const { params } = useRouteMatch();
@@ -72,7 +70,6 @@ const Study = () => {
   );
 
   // DISPLAY CARDS IF deck.cards.length >= 3
-  // make component
   const renderContent =
     deck.cards.length >= 3 ? (
       <StudyCard

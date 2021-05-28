@@ -18,8 +18,6 @@ const Form = ({ card, setCard, url, handleFormSubmit }) => {
     history.goBack();
   };
 
-  console.log(card.front);
-
   return (
     <form className="CardForm" onSubmit={handleFormSubmit}>
       <div className="form-group">
@@ -52,7 +50,9 @@ const Form = ({ card, setCard, url, handleFormSubmit }) => {
         >
           {firstButtonText}
         </button>
-        <button className="btn btn-primary">Save</button>
+        <button className="btn btn-primary" type="submit">
+          Save
+        </button>
       </div>
     </form>
   );

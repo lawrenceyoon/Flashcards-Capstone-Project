@@ -10,10 +10,6 @@ import CreateCard from '../Card/Create';
 import EditCard from '../Card/Edit';
 import NotFound from './NotFound';
 
-// deleting card is refreshing page with go(0). is that okay?
-
-// Edit Card Component updateCard BREAKING. WHY? ALSO NOT SHOWING DEFAULT ON FORMS: FRONT: CARD1, BACK: CARD1
-
 function Layout() {
   return (
     <div className="Layout">

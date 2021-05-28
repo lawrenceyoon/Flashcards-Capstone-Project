@@ -28,12 +28,17 @@ const Card = ({ card }) => {
         <div className="front">{card.front}</div>
         <div className="back">{card.back}</div>
         <div className="buttons">
-          <Link to={`${url}/cards/${card.id}/edit`}>
-            <button className="btn btn-secondary mr-2">
-              <span className="oi oi-pencil">&nbsp;</span>Edit
-            </button>
+          <Link
+            className="btn btn-secondary mr-2"
+            to={`${url}/cards/${card.id}/edit`}
+          >
+            <span className="oi oi-pencil">&nbsp;</span>Edit
           </Link>
-          <button className="btn btn-danger" onClick={handleDelete}>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleDelete}
+          >
             <span className="oi oi-trash">&nbsp;</span>
           </button>
         </div>

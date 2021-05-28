@@ -15,9 +15,7 @@ const EditCard = () => {
     back: '',
   });
 
-  console.log(params);
-
-  // useEffect ()
+  // useEffect (readDeck)
   useEffect(() => {
     const getSpecificDeck = async () => {
       const response = await readDeck(params.deckId);
@@ -26,7 +24,7 @@ const EditCard = () => {
     getSpecificDeck();
   }, [params.deckId]);
 
-  // MAYBE READCARD USEEFFECT?
+  // useEffect (readCard)
   useEffect(() => {
     const getSpecificCard = async () => {
       const response = await readCard(params.cardId);
@@ -35,9 +33,9 @@ const EditCard = () => {
     getSpecificCard();
   }, [params.cardId]);
 
+  // event handlers
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log('submitted');
     await updateCard(card);
     history.push(`/decks/${params.deckId}`);
   };
