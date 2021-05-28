@@ -6,9 +6,6 @@
 .View .buttons {
   margin-bottom: 20px;
   margin-top: 10px;
-}
-
-.View .buttons {
   display: flex;
 }
 

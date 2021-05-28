@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useRouteMatch, useHistory } from 'react-router-dom';
-import { deleteCard } from '../../utils/api';
 import './Card.css';
+import { deleteCard } from '../../utils/api';
 
 const Card = ({ card }) => {
   // useRouteMatch, useHistory
