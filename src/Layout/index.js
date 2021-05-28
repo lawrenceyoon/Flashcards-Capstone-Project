@@ -7,6 +7,7 @@ import ViewDeck from '../Deck/View';
 import EditDeck from '../Deck/Edit';
 import StudyDeck from '../Deck/Study';
 import CreateCard from '../Card/Create';
+import EditCard from '../Card/Edit';
 import NotFound from './NotFound';
 
 // get create to work first
@@ -36,6 +37,9 @@ function Layout() {
           </Route>
           <Route path="/decks/:deckId/cards/new">
             <CreateCard />
+          </Route>
+          <Route path="/decks/:deckId/cards/:cardId/edit">
+            <EditCard />
           </Route>
           {/* Catch all */}
           <Route>

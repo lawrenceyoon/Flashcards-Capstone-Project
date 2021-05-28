@@ -1,14 +1,21 @@
 import React from 'react';
-import '../Create';
+import { useHistory } from 'react-router-dom';
 
-const Form = ({ handleFormSubmit, handleCancelClick, deck, setDeck }) => {
-  // helper functions
+const Form = ({ handleFormSubmit, deck, setDeck }) => {
+  // useHistory
+  const history = useHistory();
+
+  // event handlers
   const handleChange = (event) => {
     setDeck({ ...deck, [event.target.name]: event.target.value });
   };
 
+  const handleCancelClick = () => {
+    history.goBack();
+  };
+
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form className="DeckForm" onSubmit={handleFormSubmit}>
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input
@@ -31,17 +38,18 @@ const Form = ({ handleFormSubmit, handleCancelClick, deck, setDeck }) => {
           value={deck.description}
           placeholder="Brief description of the deck"
         ></textarea>
-        <div className="buttons mt-3">
-          <button
-            className="btn btn-secondary mr-2"
-            type="button"
-            onClick={handleCancelClick}
-          >
-            Cancel
-          </button>
-          <button className="btn btn-primary" type="submit">
-            Submit
-          </button>
+        <div className="buttons">
+          <div className="buttons mt-3">
+            <button
+              className="btn btn-secondary mr-2"
+              onClick={handleCancelClick}
+            >
+              Cancel
+            </button>
+            <button className="btn btn-primary" type="submit">
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     </form>

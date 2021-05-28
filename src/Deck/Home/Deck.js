@@ -7,7 +7,9 @@ const Deck = ({ setList, deck }) => {
   // event handlers
   const handleDelete = async () => {
     try {
-      const doesConfirm = window.confirm('are you sure you want to delete?');
+      const doesConfirm = window.confirm(
+        'Delete this deck?\n\nYou will not be able to recover it.'
+      );
       if (!doesConfirm) return;
       await deleteDeck(deck.id);
       const newListDecks = await listDecks();

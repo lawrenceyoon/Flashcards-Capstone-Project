@@ -6,7 +6,7 @@ const DeckList = () => {
   // state
   const [list, setList] = useState([]);
 
-  // useEffect listDecks
+  // useEffect (listDecks)
   useEffect(() => {
     const getDecks = async () => {
       const response = await listDecks();

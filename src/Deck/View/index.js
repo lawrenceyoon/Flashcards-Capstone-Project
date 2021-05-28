@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch, useHistory } from 'react-router-dom';
 import './index.css';
-import { readDeck } from '../../utils/api';
+import { readDeck, deleteDeck } from '../../utils/api';
 import CardList from './CardList';
 
 const View = () => {
-  // routeMatch
+  // routeMatch, useHistory
   const { params, url } = useRouteMatch();
+  const history = useHistory();
 
   // state
   const [deck, setDeck] = useState({});
@@ -19,6 +20,20 @@ const View = () => {
     };
     getSpecific();
   }, [params.deckId]);
+
+  // event handlers
+  const handleDelete = async () => {
+    try {
+      const doesConfirm = window.confirm(
+        'Delete this deck?\n\nYou will not be able to recover it.'
+      );
+      if (!doesConfirm) return;
+      await deleteDeck(deck.id);
+      history.push('/');
+    } catch (err) {
+      throw err;
+    }
+  };
 
   return (
     <div className="View">
@@ -47,10 +62,12 @@ const View = () => {
             <span className="oi oi-book">&nbsp;</span>Study
           </button>
         </Link>
-        <button className="btn btn-primary">
-          <span className="oi oi-plus">&nbsp;</span>Add Cards
-        </button>
-        <button className="btn btn-danger">
+        <Link to={`/decks/${params.deckId}/cards/new`}>
+          <button className="btn btn-primary">
+            <span className="oi oi-plus">&nbsp;</span>Add Cards
+          </button>
+        </Link>
+        <button className="btn btn-danger" onClick={handleDelete}>
           <span className="oi oi-trash">&nbsp;</span>
         </button>
       </div>

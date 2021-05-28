@@ -17,12 +17,8 @@ const Create = () => {
   // event handlers
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const savedDeck = await createDeck(deck);
-    history.push(`/decks/${savedDeck.id}`);
-  };
-
-  const handleCancelClick = () => {
-    history.goBack();
+    const makeDeck = await createDeck(deck);
+    history.push(`/decks/${makeDeck.id}`);
   };
 
   return (
@@ -40,12 +36,7 @@ const Create = () => {
         </ol>
       </nav>
       <h2>Create Deck</h2>
-      <Form
-        deck={deck}
-        setDeck={setDeck}
-        handleFormSubmit={handleFormSubmit}
-        handleCancelClick={handleCancelClick}
-      />
+      <Form deck={deck} setDeck={setDeck} handleFormSubmit={handleFormSubmit} />
     </div>
   );
 };
