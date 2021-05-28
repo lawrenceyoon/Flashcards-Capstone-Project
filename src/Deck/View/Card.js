@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
-import { deleteDeck } from '../../utils/api';
+import { Link, useRouteMatch, useHistory } from 'react-router-dom';
+import { deleteCard } from '../../utils/api';
 import './Card.css';
 
 const Card = ({ card }) => {
-  // useRouteMatch
-  const { url, params } = useRouteMatch();
-
-  // useEffect (readCard) //
+  // useRouteMatch, useHistory
+  const { url } = useRouteMatch();
+  const history = useHistory();
 
   // event handlers
   const handleDelete = async () => {
@@ -16,7 +15,8 @@ const Card = ({ card }) => {
         'Delete this card?\n\nYou will not be able to recover it.'
       );
       if (!doesConfirm) return;
-      // await deleteCard(cardId)
+      await deleteCard(card.id);
+      history.go(0);
     } catch (err) {
       throw err;
     }

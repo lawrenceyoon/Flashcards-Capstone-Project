@@ -11,8 +11,8 @@
       "id": 2
     },
     {
-      "name": "asdf2",
-      "description": "asdf2",
+      "name": "adsf",
+      "description": "asdf",
       "id": 3
     }
   ],
@@ -55,8 +55,8 @@
       "id": 7
     },
     {
-      "front": "card1",
-      "back": "card1",
+      "front": "2",
+      "back": "22",
       "deckId": 3,
       "id": 8
     }

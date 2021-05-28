@@ -1,9 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Form = ({ card, setCard, handleFormSubmit }) => {
+const Form = ({ card, setCard, url, handleFormSubmit }) => {
   // useHistory
   const history = useHistory();
+
+  // if url includes "edit" show cancel text, if url includes "new" show done button
+  const arrUrl = url.split('/');
+  let firstButtonText = arrUrl.includes('new') ? 'Done' : 'Cancel';
 
   // event handlers
   const handleChange = (event) => {
@@ -13,6 +17,8 @@ const Form = ({ card, setCard, handleFormSubmit }) => {
   const handleDoneClick = () => {
     history.goBack();
   };
+
+  console.log(card.front);
 
   return (
     <form className="CardForm" onSubmit={handleFormSubmit}>
@@ -39,8 +45,12 @@ const Form = ({ card, setCard, handleFormSubmit }) => {
         ></textarea>
       </div>
       <div className="buttons">
-        <button className="btn btn-secondary mr-2" onClick={handleDoneClick}>
-          Done
+        <button
+          className="btn btn-secondary mr-2"
+          type="button"
+          onClick={handleDoneClick}
+        >
+          {firstButtonText}
         </button>
         <button className="btn btn-primary">Save</button>
       </div>

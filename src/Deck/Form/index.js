@@ -42,6 +42,7 @@ const Form = ({ handleFormSubmit, deck, setDeck }) => {
           <div className="buttons mt-3">
             <button
               className="btn btn-secondary mr-2"
+              type="button"
               onClick={handleCancelClick}
             >
               Cancel

@@ -7,7 +7,7 @@ import Form from '../Form';
 // need to make a form component, same way I did for decks
 const CreateCard = () => {
   // useRouteMatch
-  const { params } = useRouteMatch();
+  const { params, url } = useRouteMatch();
 
   // state
   const [deck, setDeck] = useState({});
@@ -56,7 +56,12 @@ const CreateCard = () => {
         </ol>
       </nav>
       <h4>{deck.name}: Add Card</h4>
-      <Form card={card} setCard={setCard} handleFormSubmit={handleFormSubmit} />
+      <Form
+        card={card}
+        setCard={setCard}
+        url={url}
+        handleFormSubmit={handleFormSubmit}
+      />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import Form from '../Form';
 
 const EditCard = () => {
   // useRouteMatch, useHistory
-  const { params } = useRouteMatch();
+  const { params, url } = useRouteMatch();
   const history = useHistory();
 
   // state
@@ -27,12 +27,9 @@ const EditCard = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log('submitted');
-    await updateCard(card); // BREAKING. WHY? ALSO NOT SHOWING DEFAULT ON FORMS: FRONT: CARD1, BACK: CARD1
+    // await updateCard(card);
     history.push(`/decks/${params.deckId}`);
   };
-
-  console.log(deck);
-  console.log(card);
 
   return (
     <div className="EditCard">
@@ -53,7 +50,12 @@ const EditCard = () => {
       </nav>
       <h3>Edit Card</h3>
       <h4>{deck.name}: Add Card</h4>
-      <Form card={card} setCard={setCard} handleFormSubmit={handleFormSubmit} />
+      <Form
+        card={card}
+        setCard={setCard}
+        url={url}
+        handleFormSubmit={handleFormSubmit}
+      />
     </div>
   );
 };
