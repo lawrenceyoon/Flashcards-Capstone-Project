@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useRouteMatch, useHistory } from 'react-router-dom';
-import { readDeck, updateCard } from '../../utils/api';
+import { readCard, updateCard, readDeck } from '../../utils/api';
 import Form from '../Form';
 
 const EditCard = () => {
@@ -15,6 +15,8 @@ const EditCard = () => {
     back: '',
   });
 
+  console.log(params);
+
   // useEffect ()
   useEffect(() => {
     const getSpecificDeck = async () => {
@@ -24,10 +26,19 @@ const EditCard = () => {
     getSpecificDeck();
   }, [params.deckId]);
 
+  // MAYBE READCARD USEEFFECT?
+  useEffect(() => {
+    const getSpecificCard = async () => {
+      const response = await readCard(params.cardId);
+      setCard(response);
+    };
+    getSpecificCard();
+  }, [params.cardId]);
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log('submitted');
-    // await updateCard(card);
+    await updateCard(card);
     history.push(`/decks/${params.deckId}`);
   };
 
