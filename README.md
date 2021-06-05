@@ -17,6 +17,8 @@ Discovered how react-router works in a full-stack application. We needed to nest
 
 ## Future goals
 
+Add a working backend server. (Will do before appying)
+
 ## Tech Stack
 
 HTML, CSS, ReactJS (Hooks), NodeJS
